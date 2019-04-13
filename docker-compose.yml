@@ -1,0 +1,11 @@
+version: '3'
+services:
+  webscr:
+    image: rizqyfaishal/webscr
+    working_dir: /data
+    restart: always
+    command: >
+      bash -c "python script.py"
+    volumes:
+      - ./screenshots:/screenshots
+      - .:/data
