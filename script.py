@@ -12,7 +12,8 @@ with open('data.json', 'r') as json_file:
 	path = '/screenshots'
 	for row in data:
 		url = row['link_page']
-		if not r.exists('webpage:' + str(count)):
+		if not (r.exists('webpage:' + str(count)) or r.get('webpage:' + str(count)) == 0):
+			r.set('webpage:' + str(count), 0)
 			chrome_options = webdriver.ChromeOptions()
 			chrome_options.add_argument('--headless')
 			chrome_options.add_argument('--no-sandbox')
